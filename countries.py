@@ -8,12 +8,15 @@ app = Flask(__name__)
 app.wsgi_app = ProxyFix(app.wsgi_app)
 
 with open('countries.json', 'ro') as f:
-    data = d = {c['cca2']: c for c in json.load(f)}
+    data = {c['cca2']: c for c in json.load(f)}
 
 
 @app.route('/countries/<code>')
 def find_country(code):
-    return jsonify(data[code])
+    if code in data:
+        return jsonify(data[code])
+    else:
+        return jsonify({}), 404
 
 
 if __name__ == "__main__":
