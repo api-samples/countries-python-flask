@@ -13,3 +13,11 @@ Run:
 Run in production with uwsgi:
      
     sudo docker run -it --rm -p 5000:5000 mikaelhg/countries-python-flask uwsgi --http :5000 -w countries:app
+
+When developing locally, just create a python virtualenv, run `pip install -r requirements.txt`,
+and execute `countries.py` for the application, or `rest_tests.py` for the functional tests.
+
+You can also run the unit tests in the Docker container:
+
+    sudo docker run -it --rm mikaelhg/countries-python-flask python rests_tests.py
+
