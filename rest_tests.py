@@ -5,7 +5,7 @@ import countries
 import unittest
 import json
 
-class FlaskrTestCase(unittest.TestCase):
+class CountriesTestCase(unittest.TestCase):
 
     def setUp(self):
         self.app = countries.app.test_client()
